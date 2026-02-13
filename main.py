@@ -12,7 +12,7 @@ app = FastAPI()
 # MongoDB connection
 MONGO_URI = os.getenv("MONGO_URI")
 client = MongoClient(MONGO_URI)
-db = client["requests_db"]
+db = client["requestdb"]
 collection = db["users"]
 
 class User(BaseModel):

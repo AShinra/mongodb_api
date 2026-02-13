@@ -38,3 +38,13 @@ def get_users():
         user["_id"] = str(user["_id"])
         users.append(user)
     return users
+
+@app.get("/users/{name}")
+def get_user(name: str):
+    user = collection.find_one({"name": name})
+
+    if not user:
+        return{
+            "message":"No such user"}
+    else:
+        return user

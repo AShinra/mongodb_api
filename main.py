@@ -18,7 +18,7 @@ collection = db["users"]
 
 class User(BaseModel):
     name: str
-    email: str
+    username: str
 
 @app.get("/")
 def home():

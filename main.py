@@ -1,5 +1,5 @@
 import os
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pymongo import MongoClient
 from pydantic import BaseModel
 from dotenv import load_dotenv
@@ -44,7 +44,7 @@ def get_user(name: str):
     user = collection.find_one({"name": name})
 
     if not user:
-        return{
-            "message":"No such user"}
-    else:
-        return user
+        raise HTTPException(status_code=404, detail="No such user")
+
+    user["_id"] = str(user["_id"])
+    return user

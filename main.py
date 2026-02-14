@@ -37,6 +37,7 @@ def get_users():
     users = []
     for user in collection.find():
         user["_id"] = str(user["_id"])
+        user['leave_credits'] = str(user["leave_credits"])
         users.append(user)
     return users
 

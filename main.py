@@ -9,6 +9,7 @@ load_dotenv()
 
 app = FastAPI()
 
+
 # MongoDB connection
 MONGO_URI = os.getenv("MONGO_URI")
 client = MongoClient(MONGO_URI)

@@ -26,7 +26,7 @@ def home():
 
 @app.post("/users")
 def create_user(user: User):
-    result = collection.insert_one(user.dict())
+    result = collection.insert_one(user.model_dump())
     return {
         "message": "User created",
         "id": str(result.inserted_id)
